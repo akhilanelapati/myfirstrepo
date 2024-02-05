@@ -1,0 +1,42 @@
+resources:
+ repositories:
+   - repository: javacode
+     type: github
+     name: myfirstrepo
+     ref: refs/heads/master
+
+ 
+
+pool:
+  vmImage: 'ubuntu-latest'
+stages:
+ - stage:
+   jobs:
+     - job: Build
+       displayName: 'Build Job'
+       steps:
+          - checkout: javacode
+            persistCredentials: true  # Persist credentials to enable Git fetch
+          - task: UseJavaVersion@1
+            inputs:
+                versionSpec: '11'
+                addToPath: tr
+          - script: 'mvn clean install'
+            displayName: 'Maven Build'
+          - task: PublishBuildArtifacts@1
+            inputs:
+              pathtoPublish: '$(System.DefaultWorkingDirectory)/target'
+              artifactName: 'drop'
+    
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+  
