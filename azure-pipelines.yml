@@ -2,7 +2,7 @@ resources:
  repositories:
    - repository: javacode
      type: github
-     endpoint: https://github.com/akhilanelapati
+     endpoint: akhilanelapati/myfirstrepo
      name: myfirstrepo
      ref: refs/heads/master
 
